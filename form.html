@@ -1,49 +1,95 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
+
+    <script>
+
+        function obrigatorio() {
+
+            var nome = document.getElementById('name').value;
+            var senha = document.getElementById('senha').value;
+            if (nome == "") {
+
+                alert(" nome não pode ser vázio ")
+                return false;
+            }
+            if (nome.length < 3) {
+                alert("precisa ser maior que 2")
+                return false;
+
+
+            }
+
+            if (senha == "") {
+
+                alert(" senha não pode ser vázio ")
+                return false;
+            }
+            if (senha.length < 6) {
+                alert("precisa ser maior que 5")
+                return false;
+
+
+            }
+
+
+
+
+        }
+
+    </script>
+
+
+
 </head>
+
 <body>
 
 
-    <form action="formulário" method="post">
+    <form method="post" action="#">
         <fieldset>
             <legend>formulário</legend>
-        <div>
-            <label for="name">Nome:</label>
-            <input type="text" id="name" />
-        </div><br>
-        <div>
-            <label for="mail">E-mail:</label>
-            <input type="email" id="mail" />
-        </div><br>
-        <div>
-             <label for="senha">Senha:</label>
-             <input type="password" id="senha" />
-        </div><br>
-        <div>
-              <label for="senha">Repetir Senha:</label>
-              <input type="password" id="repetir senha" />
+            <div>
+                <label for="name">Nome:</label>
+                <input type="text" id="name" />
             </div><br>
             <div>
-                    <label for="mode">Módulo:</label>
-                    <input type="text" id="mode" />
+                <label for="mail">E-mail:</label>
+                <input type="email" id="mail" />
+            </div><br>
+            <div>
+                <label for="senha">Senha:</label>
+                <input type="password" id="senha" />
+            </div><br>
+            <div>
+                <label for="senha">Repetir Senha:</label>
+                <input type="password" id="repetir senha" />
+            </div><br>
+            <div>
+                <label for="mode">Módulo:</label>
+                <input type="text" id="mode" />
             </div>
             <form method="post" action="mailto:youremail@email.com">
-                   
-                    <p>Peferências:</p>
-                    <input type="checkbox" name="re" value="dark" /> Redes <br />
-                    <input type="checkbox" name="po" value="light" /> Programação <br />
-                    <input type="checkbox" name="ma" value="light" /> Montagem e Manutenção<br />
-                    
-                </form>
-                <br>
-                <button type="submit">Salvar</button>
-                <button type="submit">Limpar</button>
-            </fieldset>  
+
+                <p>Peferências:</p>
+                <input type="checkbox" name="re" value="dark" /> Redes <br />
+                <input type="checkbox" name="po" value="light" /> Programação <br />
+                <input type="checkbox" name="ma" value="light" /> Montagem e Manutenção<br />
+
+            </form>
+            <br>
+            <button type="submit" onclick="obrigatorio()">Salvar</button>
+            <button type="reset">Limpar</button>
+        </fieldset>
     </form>
+
+
+
 </body>
+
 </html>
