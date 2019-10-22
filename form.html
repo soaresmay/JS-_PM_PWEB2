@@ -9,87 +9,111 @@
 
     <script>
 
-        function obrigatorio() {
+        function verificarNome() {
 
             var nome = document.getElementById('name').value;
-            var senha = document.getElementById('senha').value;
+            var errorNome = document.getElementById("errorNome");
             if (nome == "") {
 
-                alert(" nome não pode ser vázio ")
+               errorNome.innerHTML =" nome não pode ser vázio ";
                 return false;
             }
             if (nome.length < 3) {
-                alert("precisa ser maior que 2")
+                errorNome.innerHTML ="precisa ser maior que 2";
                 return false;
-
-
             }
+        }
 
+        function verificarSenha() {
+
+            var repetirSenha = document.getElementById("repetirSenha").value;
+            var senha = document.getElementById('senha').value;
+
+            if (repetirSenha != senha) {
+                errorRepetirSenha.innerHTML ="verifique sua Senha!";
+                return false;
+            }
             if (senha == "") {
 
-                alert(" senha não pode ser vázio ")
+                errorRepetirSenha.innerHTML =" senha não pode ser vázio ";
                 return false;
             }
             if (senha.length < 6) {
-                alert("precisa ser maior que 5")
+                errorRepetirSenha.innerHTML ="Sua Senha precisa ser maior que 5";
                 return false;
+            }
+        }
+        function verificarEmail() {
 
+            var email = document.getElementById("email").value;
+            var errorEmail = document.getElementById("errorEmail");
+            if (email.indexOf("@") == -1 && email.indexOf(".")== -1){
+                
+                errorEmail.innerHTML="Email inválido";
 
             }
 
-
-
-
         }
+        function verificarPreferencias(){
+            var preferencias1 = document.getElementById("re");
+            var preferencias2 = document.getElementById("po");
+            var preferencias3 = document.getElementById("ma");
 
-    </script>
 
-
-
+            if(preferencias1.checked || preferencias2.checked || preferencias3.checked){
+             
+                errorPreferencias.innerHTML= "";
+            }
+            else{
+                errorPreferencias.innerHTML= "campo obrigatório";
+                return false;   
+            }
+        }
+            </script>
 </head>
 
 <body>
-
-
     <form method="post" action="#">
         <fieldset>
             <legend>formulário</legend>
             <div>
                 <label for="name">Nome:</label>
                 <input type="text" id="name" />
+                <label id="errorNome"></label>
+              
             </div><br>
             <div>
-                <label for="mail">E-mail:</label>
-                <input type="email" id="mail" />
+                <label for="email">E-mail:</label>
+                <input onkeyup="verificarEmail()" type="email" id="email" />
+                <label id="errorEmail"></label>
             </div><br>
             <div>
                 <label for="senha">Senha:</label>
                 <input type="password" id="senha" />
+                <label id="errorSenha"></label>
             </div><br>
             <div>
                 <label for="senha">Repetir Senha:</label>
-                <input type="password" id="repetir senha" />
+                <input type="password" id="repetirSenha" />
+                <label id="errorRepetirSenha"></label>
             </div><br>
             <div>
                 <label for="mode">Módulo:</label>
                 <input type="text" id="mode" />
             </div>
-            <form method="post" action="mailto:youremail@email.com">
-
+            
                 <p>Peferências:</p>
-                <input type="checkbox" name="re" value="dark" /> Redes <br />
-                <input type="checkbox" name="po" value="light" /> Programação <br />
-                <input type="checkbox" name="ma" value="light" /> Montagem e Manutenção<br />
+                <input type="checkbox" id = "re" value="dark"/> Redes <br />
+                <input type="checkbox"  id ="po" value="light" /> Programação <br />
+                <input type="checkbox"  id ="ma" value="light" /> Montagem e Manutenção 
+                <label id="errorPreferencias"></label>
 
-            </form>
+            
             <br>
-            <button type="submit" onclick="obrigatorio()">Salvar</button>
+            <button type="button" onclick="verificarNome(), verificarSenha(), verificarPreferencias()">Salvar</button>
             <button type="reset">Limpar</button>
         </fieldset>
     </form>
-
-
-
 </body>
 
 </html>
