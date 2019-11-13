@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+
+    <script>
+
+        function verificarNome() {
+
+            var nome = document.getElementById('name').value;
+            var errorNome = document.getElementById("errorNome");
+            if (nome == "") {
+
+               errorNome.innerHTML =" nome não pode ser vázio ";
+                return false;
+            }
+            if (nome.length < 3) {
+                errorNome.innerHTML ="precisa ser maior que 2";
+                return false;
+            }
+        }
+
+        function verificarSenha() {
+
+            var repetirSenha = document.getElementById("repetirSenha").value;
+            var senha = document.getElementById('senha').value;
+
+            if (repetirSenha != senha) {
+                errorRepetirSenha.innerHTML ="verifique sua Senha!";
+                return false;
+            }
+            if (senha == "") {
+
+                errorRepetirSenha.innerHTML =" senha não pode ser vázio ";
+                return false;
+            }
+            if (senha.length < 6) {
+                errorRepetirSenha.innerHTML ="Sua Senha precisa ser maior que 5";
+                return false;
+            }
+        }
+        function verificarEmail() {
+
+            var email = document.getElementById("email").value;
+            var errorEmail = document.getElementById("errorEmail");
+            if (email.indexOf("@") == -1 && email.indexOf(".")== -1){
+                
+                errorEmail.innerHTML="Email inválido";
+
+            }
+
+        }
+        function verificarPreferencias(){
+            var preferencias1 = document.getElementById("re");
+            var preferencias2 = document.getElementById("po");
+            var preferencias3 = document.getElementById("ma");
+
+
+            if(preferencias1.checked || preferencias2.checked || preferencias3.checked){
+             
+                errorPreferencias.innerHTML= "";
+            }
+            else{
+                errorPreferencias.innerHTML= "campo obrigatório";
+                return false;   
+            }
+        }
+            </script>
+</head>
+
+<body>
+    <form method="post" action="/dados">
+        <fieldset>
+            <legend>formulário</legend>
+            <div>
+                <label for="name">Nome:</label>
+                <input type="text" id="name" name="nome"/>
+                <label id="errorNome"></label>
+              
+            </div><br>
+            <div>
+                <label for="email">E-mail:</label>
+                <input onkeyup="verificarEmail()"  id="email" name="email" />
+                <label id="errorEmail"></label>
+            </div><br>
+            <div>
+                <label for="senha">Senha:</label>
+                <input type="password" id="senha" name="Senha" />
+                <label id="errorSenha"></label>
+            </div><br>
+            <div>
+                <label for="senha">Repetir Senha:</label>
+                <input type="password" id="repetirSenha" />
+                <label id="errorRepetirSenha"></label>
+            </div><br>
+            <div>
+                <label for="mode">Modulo:</label>
+                <input type="text" id="mode" name="Modulo"/>
+            </div>
+            
+                <p>Peferências:</p>
+                <input type="checkbox" id = "re" name="preference" value="Redes" /> Redes  <br />
+                <input type="checkbox"  id ="po" name="preference" value="Programação"/> Programação <br />
+                <input type="checkbox"  id ="ma" name="preference" value="Montagem e Manutenção"/> Montagem e Manutenção 
+                <label id="errorPreferencias"></label>
+
+            
+            <br>
+            <button type="submit" onclick="verificarNome(), verificarSenha(), verificarPreferencias()">Salvar</button>
+            <button type="reset">Limpar</button>
+        </fieldset>
+    </form>
+</body>
+
+</html>
